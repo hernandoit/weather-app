@@ -31,7 +31,7 @@ handleSubmit = e => {
       const response = api_call.json();
 
       this.setState({
-        city: `${response.name}, ${response.sys.country}`,
+        city: response.name,
         country: response.sys.country,
         location: response.location,
         temperature: response.temp,
@@ -58,14 +58,8 @@ render(){
                   <label id="condition">Conditions: <span>{this.state.condition}</span></label><br></br>
             </form>
           </div>
-      </div>
-        {/* city={this.state.city} 
-        country={this.state.country}
-        location={this.state.location}
-        temp={this.state.temp}
-        humidity={this.state.humidity}
-        condition={this.state.condition} */}
-        < />
+          </div>
+        </>
       </div>       
     )
   }
