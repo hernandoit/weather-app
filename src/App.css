@@ -1,38 +1,67 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
+
+#aside {
+  background-color: #f8f8ff; 
+  width: 45%; 
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+#main {
+  background-color: #343d52; 
+  width: 55%; 
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+#main-container {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  flex-wrap: nowrap;
+  margin: 25px 10px 25px 10px;
 }
 
-.App-link {
-  color: #61dafb;
+#location {
+  border-bottom: 1px solid #606060;
+  margin-top: 20px;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+#temperature {
+  border-bottom: 1px solid #606060;
+}
+
+#humidity {
+  border-bottom: 1px solid #606060;
+}
+
+body {
+  background-color: #A52A2A;
+}
+
+button {
+  color: #f8f8ff;
+  background-color: #A52A2A;
+  margin: 5px;
+  padding: 5px 15px;
+}
+
+form {
+  margin-left: 60px;
+  display: block;
+}
+
+input {
+  border: none;
+  background-color: #343d52;
+  color: #f8f8ff;
+  border-bottom: 2px solid #A52A2A;
+  margin-top: 120px;
+  margin-right: 10px;
+}
+
+label {
+  color: #A52A2A;
+  font-size: 20px;
+  display: block;
+  width: 300px;
+  padding-bottom: 25px;
+}
+
+span {
+  color: #f8f8ff;
 }
