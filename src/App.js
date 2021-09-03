@@ -15,7 +15,7 @@ class App extends Component {
   // sets up our initial state
   // first "lifecycle" method - creates the instance of the class!
   constructor(props){
-     // sets up the parent class & allows us to override inherited props from Components!
+     // sets up the parent class & allows us to override inherited props from Components
     super(props)
     // useful constructors set up state
     this.state = {
@@ -66,7 +66,7 @@ handleSubmit = e => {
         condition: response.weather.main
       });
       } else {
-        
+
       }
     }
 
