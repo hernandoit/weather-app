@@ -40,6 +40,10 @@ button {
   padding: 5px 15px;
 }
 
+button:hover {
+  background-color: #ae3f3f;
+  border-color: #93CCEA;
+}
 form {
   margin-left: 60px;
   display: block;
