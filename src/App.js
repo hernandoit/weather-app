@@ -3,6 +3,7 @@ import './App.css';
 
 // Bootstrap components
 import Form from 'react-bootstrap/Form'
+import Button from 'react-bootstrap/Button'
 
 // COPY OF API KEY
 // API key ='bcfd2504f5065eba3f9ac4f0de960eff'
@@ -100,7 +101,7 @@ render(){
               onChange={this.handleChange}
               />
             </Form.Group>
-              <button>Get Weather</button><br></br>
+            <Button variant='primary' type='submit'>Get Weather</Button>
                   <label id="location">Location: <span>{location}</span></label><br></br>
                   <label id="temperature">Temperature: <span>{temp}</span></label><br></br>
                   <label id="humidity">Humidity: <span>{humidity}</span></label><br></br>
