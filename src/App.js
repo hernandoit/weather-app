@@ -1,31 +1,36 @@
 import React, { Component } from 'react';
+// imports our apps styling
 import './App.css';
 
 // Bootstrap components
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 
+// API key for our weather API
+const API_Key ='bcfd2504f5065eba3f9ac4f0de960eff'
+
 // COPY OF API KEY
 // API key ='bcfd2504f5065eba3f9ac4f0de960eff'
 
-// API key for our weather API
-const API_Key ='bcfd2504f5065eba3f9ac4f0de960eff'
+// DIRECT API CALL FOR TESTING ONLY!!!
+// api.openweathermap.org/data/2.5/weather?q=ocala&units=imperial&appid=bcfd2504f5065eba3f9ac4f0de960eff
 
 // Inherit from Component class
 class App extends Component {
   // sets up our initial state
   // first "lifecycle" method - creates the instance of the class!
-  constructor(props){
+  constructor(){
      // sets up the parent class & allows us to override inherited props from Components
-    super(props)
+    super()
     // useful constructors set up state
     this.state = {
-      city: '',
-      country: '',
-      location: '',
-      temperature: '',
-      humidity: '',
-      condition: ''
+      city: undefined,
+      country: undefined,
+      location: undefined,
+      temperature: undefined,
+      humidity: undefined,
+      condition: undefined,
+      error: ''
     }
   }
 
@@ -43,42 +48,49 @@ class App extends Component {
     })
 
 // Runs when the form is submitted
-handleSubmit = e => {
+handleSubmit  = async e => {
     // Prevents the browser default functionality (refresh)
     e.preventDefault()
 
-    const country = e.target.elements.country.value;
-    const city = e.target.elements.city.value;
+    const country = e.target.elements.country.value
+    const city = e.target.elements.city.value
 
-    const api_call = (
-        'api.openweathermap.org/data/2.5/weather?q=' + city + country + '&units=imperial&appid=' + API_Key
-      );
-    // if truthy makes the api_call
-    if (country && city !== '') {
+    if (city && country){
+       const api_call = await fetch(`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&units=imperial&appid=${API_Key}`)
 
-      const response = api_call;
+    // converts our api call into json format
+    const data = await api_call.json()
 
       this.setState({
-        city: response.name,
-        country: response.sys.country,
-        location: response.name + response.sys.country,
-        temperature: response.main.temp,
-        humidity: response.main.humidity,
-        condition: response.weather.main
-      });
-      } else {
-
-      }
-    }
+        city: data.name,
+        country: data.sys.country,
+        location: data.name + ',  ' + data.sys.country,
+        temperature: data.main.temp,
+        humidity: data.main.humidity,
+        condition: data.weather.main,
+        error: ''
+      });   
+    } else {
+      this.state = {
+      city:undefined,
+      country:undefined,
+      location:undefined,
+      temperature: undefined,
+      humidity: undefined,
+      condition:undefined,
+      error: 'The city name or country code you have entered is invalid, please try again!'
+    }    
+  }
+}
 
 render(){
-  // destructuring the state
-  const { location, temp, humidity, condition, city, country } = this.state
+  // destructuring the state for readibility
+  const { location, temperature, humidity, condition, city, country } = this.state 
   return (
       <div className="App">
-        <> 
+        <>
         <div id="main-container">
-        <div id="aside">picture of trees</div>
+        <div id="aside">display data here</div>
           <div id="main">
             <Form onSubmit={this.handleSubmit}>
               <Form.Group controlId='city'>
@@ -87,7 +99,7 @@ render(){
               type='city'
               name='city'
               value={city}
-              placeholder='City...'
+              placeholder='Enter a city here'
               onChange={this.handleChange}
               />
             </Form.Group>
@@ -97,13 +109,13 @@ render(){
               type='country'
               name='country'
               value={country}
-              placeholder='Country...'
+              placeholder='Enter a country here'
               onChange={this.handleChange}
               />
             </Form.Group>
             <Button variant='primary' type='submit'>Get Weather</Button>
                   <label id="location">Location: <span>{location}</span></label><br></br>
-                  <label id="temperature">Temperature: <span>{temp}</span></label><br></br>
+                  <label id="temperature">Temperature: <span>{temperature}</span></label><br></br>
                   <label id="humidity">Humidity: <span>{humidity}</span></label><br></br>
                   <label id="condition">Conditions: <span>{condition}</span></label><br></br>
             </Form>
