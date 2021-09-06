@@ -3,11 +3,14 @@
 #aside {
   background-color: #f8f8ff; 
   width: 45%; 
+  text-align: center;
+  padding-top: 160px;
 }
 
 #main {
   background-color: #343d52; 
-  width: 55%; 
+  width: 55%;
+  align-items: stretch;
 }
 
 #main-container {
@@ -47,6 +50,10 @@ button:hover {
 form {
   margin-left: 60px;
   display: block;
+}
+
+img {
+  background-image: url('https://i.imgur.com/4nLNyFZ.jpg?1');
 }
 
 input {

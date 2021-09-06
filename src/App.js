@@ -9,7 +9,7 @@ import Button from 'react-bootstrap/Button'
 // API key for our weather API
 const API_Key ='bcfd2504f5065eba3f9ac4f0de960eff'
 
-// COPY OF API KEY
+// COPY OF API KEY BECAUSE REASONS
 // API key ='bcfd2504f5065eba3f9ac4f0de960eff'
 
 // DIRECT API CALL FOR TESTING ONLY!!!
@@ -65,8 +65,8 @@ handleSubmit  = async e => {
         city: data.name,
         country: data.sys.country,
         location: data.name + ',  ' + data.sys.country,
-        temperature: data.main.temp,
-        humidity: data.main.humidity,
+        temperature: Math.round(data.main.temp)  + '°',
+        humidity: data.main.humidity + '%',
         condition: data.weather.main,
         error: ''
       });   
@@ -90,9 +90,13 @@ render(){
       <div className="App">
         <>
         <div id="main-container">
-        <div id="aside">display data here</div>
+        {/* <div id="aside-container"> */}
+          <div id="aside"><h1>Weather Finder</h1><p><em>Find out the temperature, weather conditions and more...</em></p>
+          </div>
+          {/* </div> */}
           <div id="main">
             <Form onSubmit={this.handleSubmit}>
+              <span style={{display : 'inline-block'}}>
               <Form.Group controlId='city'>
               <Form.Control
               required
@@ -101,7 +105,7 @@ render(){
               value={city}
               placeholder='Enter a city here'
               onChange={this.handleChange}
-              />
+              />  
             </Form.Group>
               <Form.Group controlId='country'>
               <Form.Control
@@ -114,6 +118,7 @@ render(){
               />
             </Form.Group>
             <Button variant='primary' type='submit'>Get Weather</Button>
+            </span>
                   <label id="location">Location: <span>{location}</span></label><br></br>
                   <label id="temperature">Temperature: <span>{temperature}</span></label><br></br>
                   <label id="humidity">Humidity: <span>{humidity}</span></label><br></br>
