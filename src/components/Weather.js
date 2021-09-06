@@ -1,5 +1,10 @@
+// BACKUP SCRIPT FOR TESTING PURPOSES
 import React from 'react'
+// COPY OF API KEY BECAUSE REASONS
+// API key ='bcfd2504f5065eba3f9ac4f0de960eff'
 
+// DIRECT API CALL FOR TESTING ONLY!!!
+// api.openweathermap.org/data/2.5/weather?q=ocala&units=imperial&appid=bcfd2504f5065eba3f9ac4f0de960eff
 const Weather = (props) => {
 
     return (

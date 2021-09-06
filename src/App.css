@@ -1,22 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap');
 
+
+/* 
+ * ID
+ */
+
+
 #aside {
-  background-color: #f8f8ff; 
-  width: 45%; 
+  background: url('/src/components/weather-finder-aside-img.jpeg') no-repeat center center fixed;
+  color: #f8f8ff;
   text-align: center;
   padding-top: 160px;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 
 #main {
-  background-color: #343d52; 
-  width: 55%;
-  align-items: stretch;
+  background-color: #343d52;
+  width: 550px;
 }
 
 #main-container {
   display: flex;
-  flex-wrap: nowrap;
-  margin: 25px 10px 25px 10px;
+  justify-content: center;
+  min-width: 600px;
+  height: 600px;
 }
 
 #location {
@@ -32,14 +40,31 @@
   border-bottom: 1px solid #606060;
 }
 
+
+/* 
+ * CLASS
+ */
+
+
+.App {
+ 
+}
+
+
+/* 
+ * ELEMENT
+ */
+
+
 body {
   background-color: #A52A2A;
 }
 
 button {
-  color: #f8f8ff;
   background-color: #A52A2A;
-  margin: 5px;
+  color: #f8f8ff;
+  height: 40px;
+  margin-top: 60px;
   padding: 5px 15px;
 }
 
@@ -47,21 +72,25 @@ button:hover {
   background-color: #ae3f3f;
   border-color: #93CCEA;
 }
+
 form {
-  margin-left: 60px;
-  display: block;
+  display: flex;
+  flex-flow: row wrap;
+  align-items: center;
+  width: 500px;
+  margin-left: 40px;
 }
 
 img {
-  background-image: url('https://i.imgur.com/4nLNyFZ.jpg?1');
+  height: 100%;
+  width: 100%;
 }
 
 input {
-  border: none;
   background-color: #343d52;
   color: #f8f8ff;
   border-bottom: 2px solid #A52A2A;
-  margin-top: 120px;
+  margin-top: 60px;
   margin-right: 10px;
 }
 
@@ -69,10 +98,42 @@ label {
   color: #A52A2A;
   font-size: 20px;
   display: block;
-  width: 300px;
+  width: 260px;
+  margin-bottom: 20px;
   padding-bottom: 25px;
 }
 
 span {
   color: #f8f8ff;
+}
+
+@media screen and (max-width: 700px) {
+  #main-container {
+      flex-flow: row wrap;
+  }
+  #aside {
+    display: none;  
+  }
+  #main {
+    height: 600px;
+    width: 100%;
+  }
+  button{
+    background-color: #0275d8;
+  }
+  button:hover {
+  background-color: #5bc0de;
+  border-color: white;
+  }
+  form {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: center;
+    width: 500px;
+  }
+  input {
+  background-color: white;
+  color: black;
+  border-bottom: 2px solid #A52A2A;
+  }
 }
