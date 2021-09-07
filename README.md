@@ -20,5 +20,10 @@ This is a weather finding app that takes a city and country code to get the temp
 - React.js
 - Bootstrap 5
 
+#### `Unsolved Problems`
+1. i want to show icons in the aside under the messages
+2. i want to display error messages
+3. i want to add .then and .catch to handle errors
+
 ## `Images`
 ![wireframe](src/components/weather-finder.png)
